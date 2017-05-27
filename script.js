@@ -25,45 +25,17 @@ $(document).ready(function () {
     var r = 0,
         click1 = '',
         click2 = '';
-    $("#character img").on("click", function (e) {
-        e.stopImmediatePropagation();
-
+    $("#character img").on("mouseout", function() {
         click2 = $(this).next().text();
         click1 = $(this).attr("alt");
-
-        if (r === 180) {//click2
-            r = 0;
-            $(this).css({
-                "transform": "rotateY(" + r + "deg)"
-            });
-            $(this).next().text(click1);
-            $(this).attr("alt", click2);
-        } else {//click1
-            r = 180;
-            $(this).css({
-                "transform": "rotateY(" + r + "deg)"
-            });
-            $(this).next().text(click1);
-            $(this).attr("alt", click2);
-        }
-
+        $(this).next().text(click1);
+        $(this).attr("alt", click2);
     });
-    $("#character img").on("mouseout", function () {
-        $(this).css({
-            "transform": "rotateY(0deg)"
-        });
-        if (r === 180) {
-            r = 0;
-            click2 = $(this).next().text();
-            click1 = $(this).attr("alt");
-            $(this).next().text(click1);
-            $(this).attr("alt", click2);
-        }
-    });
-    $("#character img").on("mouseover", function () {
-        $(this).css({
-            "transform": "rotateY(20deg)"
-        });
+    $("#character img").on("mouseover", function() {
+        click2 = $(this).next().text();
+        click1 = $(this).attr("alt");
+        $(this).next().text(click1);
+        $(this).attr("alt", click2);
     });
 
 });
